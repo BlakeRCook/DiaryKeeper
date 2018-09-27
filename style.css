@@ -1,0 +1,82 @@
+/* Split the screen in half */
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  background-color: #B2F3FF;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: #E6FFB2;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#headpt1{
+  float:right;
+  margin-right:10px;
+  color: #E6FFB2;
+  text-shadow:1.5px 0px #000000;
+  font-size:3em;
+}
+
+#headpt2{
+  float:left;
+  margin-left:10px;
+  color: #B2F3FF;
+  text-shadow:1.5px 0px #000000;
+  font-size:3em;
+}
+
+#question{
+}
+
+#button{
+  width:200px;
+  background-color:white;
+  border-color:#E6FFB2;
+  border-radius:10px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+#button:hover{
+  background-color:#E6FFB2;
+}
+
+#my-list{
+  width:430px;
+  height:470px;
+  overflow: auto;
+  text-align:left;
+  list-style-type: circle;
+}
+
+body{
+  font-family: Helvetica, Arial, Sans-Serif;
+}
+
+#textbox{
+  border-color:#E6FFB2;
+  border-width:5px;
+  border-radius:10px;
+  outline:none;
+}
