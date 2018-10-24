@@ -46,7 +46,8 @@
   font-size:3em;
 }
 
-#question{
+.question{
+  font-size:20px;
 }
 
 #button{
@@ -56,6 +57,7 @@
   border-radius:10px;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
+  margin-top:20px;
 }
 
 #button:hover{
@@ -79,4 +81,60 @@ body{
   border-width:5px;
   border-radius:10px;
   outline:none;
+}
+
+#namebox{
+  border-color:#E6FFB2;
+  border-width:2px;
+  border-radius:10px;
+  outline:none;
+}
+
+#agebox{
+  border-color:#E6FFB2;
+  border-width:2px;
+  border-radius:10px;
+  outline:none;
+}
+
+#datebox{
+  border-color:#E6FFB2;
+  border-width:2px;
+  border-radius:10px;
+  outline:none;
+}
+
+#tenbox{
+  border-color:#E6FFB2;
+  border-width:2px;
+  border-radius:10px;
+  outline:none;
+}
+
+#EditBtn{
+  background-color:white;
+  border-color:#B2F3FF;
+  border-radius:10px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+#EditBtn:hover{
+  background-color:#B2F3FF;
+}
+
+#DelBtn{
+  background-color:white;
+  border-color:#B2F3FF;
+  border-radius:10px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+#DelBtn:hover{
+  background-color:#B2F3FF;
+}
+
+#CurrentPost{
+  font-size:15px;
 }

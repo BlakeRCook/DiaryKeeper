@@ -9,11 +9,23 @@
 		<div class="split left">
 			<h1 id="headpt1">Diary</h1>
 			<div class="centered">
-				<h2 id="question">What happend today?</h2>
-				<textarea rows = "30" cols = "60" name ="Message" id="textbox">
+				<h2 class="question">Name</h2>
+				<input type="text" name="fakename" id="namebox"><br>
 
+				<h2 class="question">Age</h2>
+				<input type="text" name="fakeage" id="agebox"><br>
+
+				<h2 class="question">What happend today?</h2>
+				<textarea rows = "10" cols = "60" name ="Message" id="textbox">
 
 				</textarea>
+
+				<h2 class="question">date</h2>
+				<input type="text" name="fakedate" id="datebox"><br>
+
+				<h2 class="question">how was your day out of 10?</h2>
+				<input type="text" name="faketen" id="tenbox"><br>
+
 				<button id="button">Keep</button>
 			</div>
 		</div>
@@ -25,6 +37,9 @@
 				<ul id = "my-list">
 					
 				</ul>
+				<p id="CurrentPost"></p>
+				<button id="EditBtn">Edit</button>
+				<button id="DelBtn">Delete</button>
 			</div>
 		</div>
 
