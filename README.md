@@ -8,7 +8,7 @@ the resource can be found in the **servhw3** folder. It is called **data.db**.
 5. Ten (User rates their day out of 10)
 
 The data was made through sqlite3 and the schema for the data base looks like this:
-<addr>
+```sqlite3
 CREATE TABLE fourm (
 id INTEGER PRIMARY KEY,
 name TEXT,
@@ -16,7 +16,7 @@ age TEXT,
 sentence TEXT,
 date TEXT,
 ten TEXT);
-</addr>
+```
 
 The API implemented in my website consits of:
 1. GET
@@ -24,16 +24,16 @@ The API implemented in my website consits of:
 3. PUT
 4. DELETE
 
-**GET** has 2 functions one for retrieving all items and one to retrieve a single item.
-ex: (HTTP GET http://localhost:8080/messages)
-or
-ex: (HTTP GET http://localhost:8080/messages/1)
+**GET** has 2 functions one for retrieving all items and one to retrieve a single item.<br />
+ex: (HTTP GET http://localhost:8080/messages)<br />
+or<br />
+ex: (HTTP GET http://localhost:8080/messages/1)<br />
 
-**POST** creats a post and gives the post a unique id
-ex: (HTTP POST http://localhost:8080/messages)
+**POST** creats a post and gives the post a unique id<br />
+ex: (HTTP POST http://localhost:8080/messages)<br />
 
-**PUT** edits one of the post
-ex: (HTTP PUT http://localhost:8080/messages/1)
+**PUT** edits one of the post<br />
+ex: (HTTP PUT http://localhost:8080/messages/1)<br />
 
-**DELETE** deletes a post
-ex: (HTTP DELETE http://localhost:8080/messages/1)# f18-resourceful-DoctorHobo
+**DELETE** deletes a post<br />
+ex: (HTTP DELETE http://localhost:8080/messages/1)<br />
