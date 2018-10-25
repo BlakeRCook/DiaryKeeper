@@ -36,4 +36,4 @@ ex: (HTTP POST http://localhost:8080/messages)<br />
 ex: (HTTP PUT http://localhost:8080/messages/1)<br />
 
 **DELETE** deletes a post<br />
-ex: (HTTP DELETE http://localhost:8080/messages/1)<br />
+ex: (HTTP DELETE http://localhost:8080/messages/1)<br /># f18-resourceful-Doctorhobo
