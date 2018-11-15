@@ -1,4 +1,4 @@
-loadPage();
+// loadPage();
 var thepost = 0
 var editMode = false
 var deleteMode = false
@@ -22,7 +22,7 @@ button.onclick = function (){
 var editBtn = document.querySelector('#EditBtn');
 editBtn.onclick = function (){
 	editMode = true
-	fetch("http://localhost:8080/messages/" + thepost.toString()).then(function (response) { 
+	fetch("http://localhost:8080/messages/" + thepost.toString(), {credentials: 'include'}).then(function (response) { 
 	response.json().then(function(feild) {
 		//console.log("what is this", feild);
 		document.getElementById("namebox").value = feild.name;
@@ -46,6 +46,7 @@ var editFourm = function(name, age, sentence, date, ten){
 	fetch("http://localhost:8080/messages/" + thepost.toString(), {
 		method: "PUT",
 		body: data,
+		credentials: 'include',
 		headers: {
 			"Content-type": "application/x-www-form-urlencoded"
 		}
@@ -71,6 +72,7 @@ var createFourm = function (name, age, sentence, date, ten){
 		//method, body, header
 		method: "POST",
 		body: data,
+		credentials: 'include',
 		headers: {
 			"Content-type": "application/x-www-form-urlencoded"
 		}
@@ -104,16 +106,18 @@ var fourmSelected = function (feild){
 	thepost = feild.id;
 	var url = "http://localhost:8080/messages/" + feild.id.toString();
 	fetch(url, {
-		method:"GET"
+		method:"GET",
+		credentials: 'include'
 	}).then(function(response){
 		console.log("a post was clicked");
+		//loadPage();
 	});
 };
 
 
 var DelBtn = document.querySelector('#DelBtn');
 DelBtn.onclick = function (){
-	fetch("http://localhost:8080/messages/" + thepost.toString()).then(function (response) { 
+	fetch("http://localhost:8080/messages/" + thepost.toString(), {method: "GET", credentials: 'include'}).then(function (response) { 
 	response.json().then(function(feild) {
 		deleteFourm(feild);
 	});
@@ -125,6 +129,7 @@ var deleteFourm = function (fourm) {
 		console.log("Deleting post with ID", fourm.id);
 		fetch("http://localhost:8080/messages/" + thepost.toString(), {
 			method: "DELETE",
+			credentials: 'include'
 		}).then(function (response) {
 			console.log("post was deleted")
 			var CurrentSelectd = document.querySelector('#CurrentPost');
@@ -136,11 +141,160 @@ var deleteFourm = function (fourm) {
 
 
 function loadPage(){
-	fetch("http://localhost:8080/messages").then(function (response) { //wait for server to get us
-	response.json().then(function(fourm) { //waiting for the unpackaged data
+	fetch("http://localhost:8080/messages", {credentials: 'include'}).then(function (response) { 
+	if (response.status == 200){
+		response.json().then(function(fourm) { //waiting for the unpackaged data
 		//document.getElementById("textbox").value = "";
 		console.log("fourm:", fourm);
+		turnoff();
 		DisplayFourm(fourm);
 	});
+	}//wait for server to get us
+	else
+	{
+		//do nothing
+	}
 }); //part of the response
 }
+
+
+var registerBtn1 = document.querySelector('#re_registerbutton1');
+registerBtn1.onclick = function (){
+	turnOnRegistration();
+}
+
+function turnOnRegistration(){
+	document.getElementById("ex_emailbox").style.display = "none";
+	document.getElementById("ex_passwordbox").style.display = "none";
+	document.getElementById("ex_loginbutton").style.display = "none";
+	document.getElementById("re_registerbutton1").style.display = "none";
+
+	document.getElementById("re_registerbutton2").style.display = "inline";
+	document.getElementById("re_emailbox").style.display = "inline";
+	document.getElementById("re_passwordbox1").style.display = "inline";
+	document.getElementById("re_passwordbox2").style.display = "inline";
+	document.getElementById("PasswordRetypetxt").style.display = "inline";
+	document.getElementById("firstnametxt").style.display = "inline";
+	document.getElementById("lastnametxt").style.display = "inline";
+	document.getElementById("re_firstnamebox").style.display = "inline";
+	document.getElementById("re_lastnamebox").style.display = "inline";
+}
+
+var registerBtn2 = document.querySelector('#re_registerbutton2');
+registerBtn2.onclick = function (){
+	var re_password1 = document.querySelector("#re_passwordbox1");
+	var re_password2 = document.querySelector("#re_passwordbox2");
+	if(re_password1.value == re_password2.value && re_password1.value != ""){
+		
+		var re_firstname = document.querySelector("#re_firstnamebox");
+		var re_lastname = document.querySelector("#re_lastnamebox");
+		var re_email = document.querySelector("#re_emailbox");
+		var re_password = document.querySelector("#re_passwordbox1");
+		createUser(re_firstname.value, re_lastname.value, re_email.value, re_password.value);
+
+		//confirm("Account Created. you can now login with credentials.")
+		toLogin();
+	} else{
+		confirm("please retype password")
+	}
+}
+
+function toLogin(){
+	document.getElementById("ex_emailbox").style.display = "inline";
+	document.getElementById("ex_passwordbox").style.display = "inline";
+	document.getElementById("ex_loginbutton").style.display = "inline";
+	document.getElementById("re_registerbutton1").style.display = "inline";
+
+	document.getElementById("re_registerbutton2").style.display = "none";
+	document.getElementById("re_emailbox").style.display = "none";
+	document.getElementById("re_passwordbox1").style.display = "none";
+	document.getElementById("re_passwordbox2").style.display = "none";
+	document.getElementById("PasswordRetypetxt").style.display = "none";
+	document.getElementById("firstnametxt").style.display = "none";
+	document.getElementById("lastnametxt").style.display = "none";
+	document.getElementById("re_firstnamebox").style.display = "none";
+	document.getElementById("re_lastnamebox").style.display = "none";
+}
+
+var createUser = function (FirstName, LastName, Email, Password){
+	//var someData = "name=" + encodeURIComponent(name); //not supose to be hard coded.
+	var data = `firstname=${encodeURIComponent(FirstName)}`;
+	data += `&lastname=${encodeURIComponent(LastName)}`;
+	data += `&email=${encodeURIComponent(Email)}`;
+	data += `&password=${encodeURIComponent(Password)}`;
+
+	fetch("http://localhost:8080/users", {
+		//method, body, header
+		method: "POST",
+		body: data,
+		credentials: 'include',
+		headers: {
+			"Content-type": "application/x-www-form-urlencoded"
+		}
+	}).then(function(response){ //{} is an js object thats a dictionary.
+		if (response.status == 422) {
+			alert("User already exists")
+			turnOnRegistration();
+		}
+		else{
+			console.log("A User was created");
+			confirm("Account Created. you can now login with credentials.")
+			loadPage();
+		}
+	});
+};//part of the request
+
+var loginBtn = document.querySelector('#ex_loginbutton');
+loginBtn.onclick = function (){
+	var email = document.querySelector("#ex_emailbox");
+	var password = document.querySelector("#ex_passwordbox");
+
+	var data = `email=${encodeURIComponent(email.value)}`;
+	data += `&password=${encodeURIComponent(password.value)}`;
+
+	fetch("http://localhost:8080/sessions", {
+		//method, body, header
+		method: "POST",
+		body: data,
+		credentials: 'include',
+		headers: {
+			"Content-type": "application/x-www-form-urlencoded"
+		}
+	}).then(function(response){
+		if(response.status == 401)
+		{
+			alert("Email or password is wrong")
+			toLogin();
+		}
+		else
+		{
+			console.log("A session is starting");
+			turnoff();
+			loadPage();
+		}
+	});
+}
+
+function turnoff () {
+	document.getElementById("loginpromt").style.display = "none";
+ 	document.getElementById("ex_emailbox").style.display = "none";
+	document.getElementById("ex_passwordbox").style.display = "none";
+	document.getElementById("ex_loginbutton").style.display = "none";
+	document.getElementById("re_registerbutton1").style.display = "none";
+	document.getElementById("re_registerbutton2").style.display = "none";
+	document.getElementById("re_emailbox").style.display = "none";
+	document.getElementById("re_passwordbox1").style.display = "none";
+	document.getElementById("re_passwordbox2").style.display = "none";
+	document.getElementById("PasswordRetypetxt").style.display = "none";
+	document.getElementById("firstnametxt").style.display = "none";
+	document.getElementById("lastnametxt").style.display = "none";
+	document.getElementById("re_firstnamebox").style.display = "none";
+	document.getElementById("re_lastnamebox").style.display = "none";
+
+}
+loadPage();
+	//have to go to every fetch request for this all the post/get/put/etc.
+	//with the (Method, body) all we do is add (credentials: 'include')
+	//for fetch requests with no settings at the end
+	//"localhost", {credentials: 'include'}).
+	//422 failure validation and dup emails

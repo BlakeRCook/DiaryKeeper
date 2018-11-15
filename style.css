@@ -1,4 +1,16 @@
 /* Split the screen in half */
+#loginpromt{
+  height: 300px;
+  width: 400px;
+  z-index: 2;
+  background-color: #fff;
+  position: fixed;
+  left:37%;
+  top:30%;
+  border:3px solid black;
+  border-radius:10px;
+  display: inline;
+}
 .split {
   height: 100%;
   width: 50%;
@@ -137,4 +149,114 @@ body{
 
 #CurrentPost{
   font-size:15px;
+}
+
+#ex_emailbox{
+  border-color:#E6FFB2;
+  border-width:2px;
+  border-radius:5px;
+  outline:none;
+  display: inline;
+}
+
+#ex_passwordbox{
+  border-color:#B2F3FF;
+  border-width:2px;
+  border-radius:5px;
+  outline:none;
+  display: inline;
+}
+
+#ex_loginbutton{
+  margin-top:10px;
+  background-color:white;
+  border-color:#E6FFB2;
+  border-radius:10px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  outline:none;
+  display: inline;
+}
+
+#Emailtxt{
+  display: inline;
+}
+
+#Passwordtxt{
+  display: inline;
+}
+
+#re_registerbutton1{
+  margin-top:10px;
+  background-color:white;
+  border-color:#B2F3FF;
+  border-radius:10px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  outline:none;
+  display: inline;
+}
+
+#re_registerbutton2{
+  margin-top:10px;
+  background-color:white;
+  border-color:#B2F3FF;
+  border-radius:10px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  outline:none;
+  display: none;
+}
+
+#re_emailbox{
+  border-color:#E6FFB2;
+  border-width:2px;
+  border-radius:5px;
+  outline:none;
+  display: none;
+}
+
+#re_passwordbox1{
+  border-color:#B2F3FF;
+  border-width:2px;
+  border-radius:5px;
+  outline:none;
+  display: none;
+}
+
+#re_passwordbox2{
+  border-color:#B2F3FF;
+  border-width:2px;
+  border-radius:5px;
+  outline:none;
+  display: none;
+}
+
+#PasswordRetypetxt{
+  margin-bottom:1px;
+  display: none;
+}
+
+#firstnametxt{
+  display: none;
+}
+
+#lastnametxt{
+  display:none;
+}
+
+#re_firstnamebox{
+  border-color:#E6FFB2;
+  border-width:2px;
+  border-radius:5px;
+  outline:none;
+  display:none;
+}
+
+#re_lastnamebox{
+  border-color:#E6FFB2;
+  border-width:2px;
+  border-radius:5px;
+  outline:none;
+  display:none;
 }
