@@ -62,4 +62,4 @@ ex: (HTTP GET http://localhost:8080/session)<br />
 **POST** creates a session for the currently logged in user<br />
 ex: (HTTP POST http://localhost:8080/session)<br />
 
-# f18-resourceful-Doctorhobo
+
